@@ -1,0 +1,11 @@
+while vector<int> prefix(string s){
+    vector<int> p(s.size());
+    p[0] = 0;
+    int k = 0;
+    for(int i = 1; i < s.size(); i++){
+        while(k > 0 && s[i] != s[k]) k = p[k-1];
+        if(s[i] == s[k]) k++;
+        p[i] = k;
+    }
+    return p;
+}
